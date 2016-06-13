@@ -150,6 +150,7 @@
     <Compile Include="Utility\VersionChecker.cs" />
     <Compile Include="ViewModel\AdvancedSearchCategory.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\AccurayFilter.cs" />
+    <Compile Include="ViewModel\Filters\ForumExport\EverythingFilter.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\CraftedModFilter.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\CurrencyFilter.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\EnchantModFilter.cs" />
@@ -167,6 +168,7 @@
     <Compile Include="ViewModel\Filters\ForumExport\SixLink.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\SixRedSockets.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\SocketColourFilter.cs" />
+    <Compile Include="ViewModel\ForumExportVisitors\EverythingVisitor.cs" />
     <Compile Include="ViewModel\ForumExportVisitors\CurrencyVisitor.cs" />
     <Compile Include="ViewModel\SetTabBuyoutViewModel.cs" />
     <Compile Include="ViewModel\TradeSettingsViewModel.cs" />
