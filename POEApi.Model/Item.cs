@@ -17,7 +17,8 @@ namespace POEApi.Model
         Normal,
         Magic,
         Rare,
-        Unique
+        Unique,
+        Relic
     }
 
     public abstract class Item : ICloneable
@@ -73,7 +74,7 @@ namespace POEApi.Model
             this.ItemType = Model.ItemType.UnSet;
             this.CraftedMods = item.CraftedMods;
             this.EnchantMods = item.EnchantMods;
-            this.ItemLevel = item.ItemLevel;
+            this.ItemLevel = item.Ilvl;
 
             if (item.Properties != null)
             {
@@ -87,8 +88,8 @@ namespace POEApi.Model
             }
 
             this.Corrupted = item.Corrupted;
-            this.Microtransactions = item.CosmeticMods == null ? new List<string>() : item.CosmeticMods;
-            this.EnchantMods = item.EnchantMods == null ? new List<string>() : item.EnchantMods;
+            this.Microtransactions = item.CosmeticMods ?? new List<string>();
+            this.EnchantMods = item.EnchantMods ?? new List<string>();
 
             this.TradeX = this.X;
             this.TradeY = this.Y;
@@ -126,8 +127,12 @@ namespace POEApi.Model
 
         protected Rarity getRarity(JSONProxy.Item item)
         {
-            if (item.frameType <= 3)
-                return (Rarity)item.frameType;
+            //Looks like isRelic is coming across the wire as an additional field but coincidentally 9 was the correct frame type here.
+            if (item.FrameType == 9 || item.IsRelic)
+                return Rarity.Relic;
+
+            if (item.FrameType <= 3)
+                return (Rarity)item.FrameType;
 
             return Rarity.Normal;
         }
